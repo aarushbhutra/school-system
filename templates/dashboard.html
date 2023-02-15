@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+    <script>
+        window.addEventListener('load', function() {
+            const logoutButton = document.querySelector('#logout');
+            logoutButton.addEventListener('click', () => {
+                window.location.href = "http://127.0.0.1:5000/clear"
+            });
+        });
+        
+    </script>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="keywords" content="SCHOOL DB - DATA">
+        <meta name="description" content="">
+        <title>SchoolDB</title>
+        <link rel="stylesheet" href="/static/nicepage.css" media="screen">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/Page-1.css" media="screen">
+        <script class="u-script" type="text/javascript" src="/static/jquery.js" defer=""></script>
+        <script class="u-script" type="text/javascript" src="/static/nicepage.js" defer=""></script>
+        <meta name="generator" content="Nicepage 5.2.0, nicepage.com">
+        <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+        <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,200,300,400,500,600,700,800,900">
+        
+        
+        
+        <meta name="theme-color" content="#478ac9">
+        <meta property="og:title" content="Page 1">
+        <meta property="og:type" content="website">
+    </head>
+    <body class="u-body u-xl-mode" data-lang="en">
+        <section class="u-clearfix u-gradient u-section-1" id="sec-8dd4">
+            <h1 class="u-custom-font u-font-roboto-slab u-text u-text-default u-text-1">SCHOOL DB - DATA</h1>
+            <button id="logout" class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-hover-feature u-hover-palette-2-dark-2 u-palette-2-dark-1 u-radius-6 u-text-body-color u-btn-1">Log Out</button>
+            <button id="add_info" class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-hover-feature u-hover-palette-4-dark-2 u-palette-4-dark-1 u-radius-6 u-text-body-color u-btn-2">Add Information</button>
+            <br>
+            <h4 id="response" style="text-align: center; "></h4>
+            <br>
+            <div id="popup" class="popup">
+                <h2>Add Information</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class">Class:</label>
+                        <select class="form-control" id="class" name="class" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" pattern="[0-9]+" class="form-control" id="age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact:</label>
+                        <input type="number" pattern="[0-9]+" class="form-control" id="contact1" name="contact1" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                </form> 
+                <button id="close" class="btn btn-secondary close">X</button>
+            </div>
+            <div id="popup_edit" class="popup_edit">
+                <h2>Edit Information</h2>
+                <p id="info"></p>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="edit-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class">Class:</label>
+                        <select class="form-control" id="edit-class" name="class" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" pattern="[0-9]+" class="form-control" id="edit-age" name="age" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact:</label>
+                        <input type="number" pattern="[0-9]+" class="form-control" id="edit-contact1" name="contact1" maxlength="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="edit-email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                    </div>
+                    <button id="update" type="update" class="btn btn-primary">Update</button>
+                </form> 
+                <button id="close_edit" class="btn btn-secondary close">X</button>
+            </div>
+            <div id="popup_delete" class="popup_delete">
+                <br>
+                <h3>Are You Sure?</h3>
+                <form>
+                    <br>
+                    <p id="confirmDelete">You are about to delete Student </p>
+                    <br><br>
+                    <button id="delete" type="delete" class="btn btn-danger">Delete</button>
+                </form> 
+                <button id="close_delete" class="btn btn-secondary close">X</button>
+            </div>
+            <div class="u-expanded-width u-table u-table-responsive u-table-1">
+              <table class="u-table-entity">
+                <thead class="u-custom-font u-font-roboto-slab u-table-body u-table-body-1">
+                  <tr style="height: 46px;">
+                    <td class="u-border-5 u-border-grey-dark-1 u-table-cell">ID</td>
+                    <td class="u-border-5 u-border-grey-dark-1 u-table-cell">NAME</td>
+                    <td class="u-border-5 u-border-grey-dark-1 u-table-cell">CLASS</td>
+                    <td class="u-border-5 u-border-grey-dark-1 u-table-cell">AGE</td>
+                    <td class="u-border-5 u-border-grey-dark-1 u-table-cell">CONTACT</td>
+                    <td class="u-border-5 u-border-grey-dark-1 u-table-cell">EMAIL</td>
+                    <td class="u-border-5 u-border-grey-dark-1 u-table-cell">ACTION</td>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+
+            <script>
+                window.addEventListener('load', function() {
+                    const logoutButton = document.querySelector('#logout');
+                    logoutButton.addEventListener('click', () => {
+                        window.location.href = "http://127.0.0.1:5000/clear"
+                    });
+                });
+                document.addEventListener('DOMContentLoaded', function() {
+                fetch('/student_data')
+                    .then(response => response.json())
+                    .then(serialized => {
+                    const tbody = document.querySelector('tbody');
+                    serialized.forEach(entry => {
+                        const tr = document.createElement('tr');
+                        tr.classList.add('entry');
+
+                        const idTd = document.createElement('td');
+                        idTd.textContent = entry.id;
+                        tr.appendChild(idTd);
+
+                        const nameTd = document.createElement('td');
+                        nameTd.textContent = entry.name;
+                        tr.appendChild(nameTd);
+
+                        const classTd = document.createElement('td');
+                        classTd.textContent = entry.class;
+                        tr.appendChild(classTd);
+
+                        const ageTd = document.createElement('td');
+                        ageTd.textContent = entry.age;
+                        tr.appendChild(ageTd);
+
+                        const contactTd = document.createElement('td');
+                        contactTd.textContent = entry.contact;
+                        tr.appendChild(contactTd);
+
+                        const emailTd = document.createElement('td');
+                        emailTd.textContent = entry.email;
+                        tr.appendChild(emailTd);
+
+                        const buttonsTd = document.createElement('td');
+                        tr.appendChild(buttonsTd);
+
+                        const editButton = document.createElement('button');
+                        editButton.classList.add('btn', 'btn-warning');
+                        editButton.textContent = 'Edit';
+                        editButton.id = `edit-${entry.id}`;
+                        buttonsTd.appendChild(editButton);
+                        
+                        editButton.addEventListener('click', function() {
+                            document.getElementById('popup_edit').style.display = 'block';
+                            if(entry.id <= 9) {
+                                document.getElementById('info').textContent = "You are editing Student " + entry.name + " with ID 0" + entry.id;
+                            } else {
+                                document.getElementById('confirmDelete').textContent = "You are editing Student " + entry.name + " with ID " + entry.id;
+                            }
+                            document.getElementById('edit-name').value = entry.name;
+                            document.getElementById('edit-class').value = entry.class;
+                            document.getElementById('edit-age').value = entry.age;
+                            document.getElementById('edit-contact1').value = entry.contact;
+                            document.getElementById('edit-email').value = entry.email;
+                        });
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.classList.add('btn', 'btn-danger');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.id = `delete-${entry.id}`;
+                        buttonsTd.appendChild(deleteButton);
+
+                        deleteButton.addEventListener('click', function() {
+                            document.getElementById('popup_delete').style.display = 'block';
+                            if(entry.id <= 9) {
+                                document.getElementById('confirmDelete').textContent = "You are about to delete Student " + entry.name + " with ID 0" + entry.id;
+                            } else {
+                                document.getElementById('confirmDelete').textContent = "You are about to delete Student " + entry.name + " with ID " + entry.id;
+                            }
+                        });
+
+                        tbody.appendChild(tr);
+
+                        
+                        });
+                    });
+
+                    
+
+                } , false);
+            const updateButton = document.querySelector('#update');
+            updateButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                if(document.querySelector('#edit-contact1').value.length != 10) {
+                    document.getElementById('response').style.color = "red";
+                    document.getElementById('response').innerHTML = "Contact Number must be 10 digits!";
+                    document.getElementById('popup_edit').style.display = 'none';
+                    setTimeout(function() {
+                        document.getElementById('response').innerHTML = "";
+                        document.getElementById('popup_edit').style.display = 'block';
+                    }, 2000);
+                    return;
+                }
+                //CHeck if the value of #email contains @
+                if(document.querySelector('#edit-email').value.indexOf('@') == -1) {
+                    document.getElementById('response').style.color = "red";
+                    document.getElementById('response').innerHTML = "Email must contain @!";
+                    document.getElementById('popup_edit').style.display = 'none';
+                    setTimeout(function() {
+                        document.getElementById('response').innerHTML = "";
+                        document.getElementById('popup_edit').style.display = 'block';
+                    }, 2000);
+                    return;
+                }
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/route');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = () => {
+                    if(xhr.status === 200) {
+                        document.getElementById('response').style.color = "green";
+                        document.getElementById('response').innerHTML = "Student Updated Successfully!";
+                        document.getElementById('popup_edit').style.display = 'none';
+                        setTimeout(function() {
+                            document.getElementById('response').innerHTML = "";
+                            location.reload();
+                        }, 2000);
+                    } else {
+                        document.getElementById('response').style.color = "red";
+                        document.getElementById('response').innerHTML = "Error Updating Student!";
+                        document.getElementById('popup_edit').style.display = 'none';
+                        setTimeout(function() {
+                            document.getElementById('response').innerHTML = "";
+                            location.reload();
+                        }, 2000);
+                    }
+                }
+
+                const name = document.querySelector('#edit-name').value;
+                const grade = document.querySelector('#edit-class').value;
+                const age = Number(document.querySelector('#edit-age').value);
+                const contact = document.querySelector('#edit-contact1').value;
+                const email = document.querySelector('#edit-email').value;
+                const id = document.getElementById('info').textContent.slice(-2);
+
+                if (isNaN(age)) {
+                    document.getElementById('response').style.color = "red";
+                    document.getElementById('response').innerHTML = "Age must be numbers!";
+                    document.getElementById('popup_edit').style.display = 'none';
+                    setTimeout(function() {
+                        document.getElementById('response').innerHTML = "";
+                        document.getElementById('popup_edit').style.display = 'block';
+                    }, 2000);
+                } else {
+                    xhr.send(JSON.stringify({method: 'update', id: id, name: name, grade: grade, age: age, contact: contact, email: email}));
+                }
+
+            })
+
+            const submitButton = document.querySelector('#submit');
+            
+            submitButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                if(document.querySelector('#contact1').value.length != 10) {
+                    document.getElementById('response').style.color = "red";
+                    document.getElementById('response').innerHTML = "Contact Number must be 10 digits!";
+                    document.getElementById('popup').style.display = 'none';
+                    setTimeout(function() {
+                        document.getElementById('response').innerHTML = "";
+                        document.getElementById('popup').style.display = 'block';
+                    }, 2000);
+                    return;
+                }
+                //CHeck if the value of #email contains @
+                if(document.querySelector('#email').value.indexOf('@') == -1) {
+                    document.getElementById('response').style.color = "red";
+                    document.getElementById('response').innerHTML = "Email must contain @!";
+                    document.getElementById('popup').style.display = 'none';
+                    setTimeout(function() {
+                        document.getElementById('response').innerHTML = "";
+                        document.getElementById('popup').style.display = 'block';
+                    }, 2000);
+                    return;
+                }
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/route');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if(response && response['add_data']) {
+                            document.getElementById('popup').style.display = 'none';
+                            document.getElementById('response').style.color = "green";
+                            document.getElementById('response').innerHTML = "Added Info!";
+                            //After 2 seconds, remove the response
+                            setTimeout(function() {
+                                document.getElementById('response').innerHTML = "";
+                                location.reload();
+                            }, 2000);
+                        } else {
+                            document.getElementById('response').style.color = "red";
+                            document.getElementById('response').innerHTML = "Error!";
+                            //After 2 seconds, remove the response
+                            setTimeout(function() {
+                                document.getElementById('response').innerHTML = "";
+                                location.reload();
+                            }, 2000);
+                        }
+                    } else {
+                        console.log('Error connecting to server');
+                    }
+                };
+
+                const name = document.querySelector('#name').value;
+                const grade = document.querySelector('#class').value;
+                const age = document.querySelector('#age').value;
+                const contact = document.querySelector('#contact1').value;
+                const email = document.querySelector('#email').value;
+                
+                xhr.send(JSON.stringify({method : "add_data", name : name, grade : grade, age : age, contact : contact, email : email}));
+            });
+
+            const deleteButton = document.querySelector("#delete");
+            deleteButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/route');
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if(response && response['delete_data']) {
+                            document.getElementById('popup_delete').style.display = 'none';
+                            document.getElementById('response').style.color = "green";
+                            document.getElementById('response').innerHTML = "Deleted Info!";
+                            //After 2 seconds, remove the response
+                            setTimeout(function() {
+                                document.getElementById('response').innerHTML = "";
+                                location.reload();
+                            }, 500);
+                        } else {
+                            document.getElementById('response').style.color = "red";
+                            document.getElementById('response').innerHTML = "Error!";
+                            //After 2 seconds, remove the response
+                            setTimeout(function() {
+                                document.getElementById('response').innerHTML = "";
+                                location.reload();
+                            }, 2000);
+                        }
+                    } else {
+                        console.log('Error connecting to server');
+                    }
+                }
+                const id = document.getElementById('confirmDelete').textContent.slice(-2);
+                xhr.send(JSON.stringify({method : "delete_data", id : id}))
+            });
+
+
+            window.onload = function() {
+                document.getElementById('add_info').addEventListener('click', function() {
+                    document.getElementById('popup').style.display = 'block';
+                });
+                document.getElementById('close').addEventListener('click', function() {
+                    document.getElementById('popup').style.display = 'none';
+                });
+                document.getElementById('close_delete').addEventListener('click', function(event) {
+                    document.getElementById('popup_delete').style.display = 'none';
+                });
+                document.getElementById('close_edit').addEventListener('click', function(event) {
+                    document.getElementById('popup_edit').style.display = 'none';
+                });
+            }; 
+            </script>
+
+          </section>
+    </body>
+</html>
